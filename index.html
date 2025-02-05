@@ -3,94 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>God's Mushroom - Największy importer grzybów w Europie</title>
+    <title>God's Mushroom</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Reklama w lewym rogu -->
-    <aside class="advertisement">
-        <a href="#">
-            <img src="advertisement.jpg" alt="Reklama">
-        </a>
-    </aside>
-
-    <header>
-        <div class="container">
-            <h1>God's Mushroom</h1>
-            <!-- Menu rozwijane -->
-            <nav class="menu">
-                <button class="menu-toggle" aria-label="Otwórz menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="menu-dropdown">
-                    <li><a href="#about">O nas</a></li>
-                    <li><a href="#products">Produkty</a></li>
-                    <li><a href="#subscription">GrzyBOX</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <header>
+            <div class="logo">Logo</div>
+        </header>
+        <div class="ads left-ads">Ads</div>
+        <main>
+            <section class="banner">Banner</section>
+            <section class="products">
+                <h2>Products</h2>
+                <div class="product-list">
+                    <div class="product-item"></div>
+                    <div class="product-item"></div>
+                    <div class="product-item"></div>
+                    <div class="product-item"></div>
+                </div>
+            </section>
+        </main>
+        <div class="ads right-ads">
+            <div class="dropdown-menu">Dropdown menu</div>
+            Ads
         </div>
-    </header>
-
-    <section id="hero">
-        <div class="container">
-            <h2>Odkryj świat nieznanych grzybów</h2>
-            <p>Dołącz do naszego GrzyBOX i otrzymuj co miesiąc pudełko z wyjątkowymi grzybami!</p>
-            <a href="#subscription" class="btn">Zamów teraz</a>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <h2>O nas</h2>
-            <p>Jesteśmy czwartym największym importerem i eksporterem grzybów w Europie. Nasza pasja to odkrywanie i dostarczanie najrzadszych, jadalnych grzybów z całego świata.</p>
-        </div>
-    </section>
-
-    <section id="products">
-        <div class="container">
-            <h2>Nasze produkty</h2>
-            <p>Oferujemy szeroki wybór grzybów, od popularnych po te najmniej znane. Sprawdź nasz asortyment!</p>
-        </div>
-    </section>
-
-    <section id="subscription">
-        <div class="container">
-            <h2>GrzyBOX</h2>
-            <p>Co miesiąc otrzymuj pudełko z mało znanymi, jadalnymi grzybami. Koszt subskrypcji: <strong>74.99 zł/miesiąc</strong>.</p>
-            <a href="#" class="btn">Zamów teraz</a>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Kontakt</h2>
-            <p>Masz pytania? Skontaktuj się z nami!</p>
-            <form>
-                <input type="text" placeholder="Imię i nazwisko" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Wiadomość" required></textarea>
-                <button type="submit">Wyślij</button>
-            </form>
-        </div>
-    </section>
-
+    </div>
     <footer>
-        <div class="container">
-            <p>&copy; 2023 God's Mushroom. Wszystkie prawa zastrzeżone.</p>
-        </div>
+        <p>&copy; 2025 God's Mushroom</p>
     </footer>
-
-    <script>
-        // Skrypt do obsługi menu rozwijanego
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menuDropdown = document.querySelector('.menu-dropdown');
-
-        menuToggle.addEventListener('click', () => {
-            menuDropdown.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
