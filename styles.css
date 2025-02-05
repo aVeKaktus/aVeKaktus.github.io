@@ -1,4 +1,3 @@
-/* styles.css */
 body {
     font-family: 'Playfair Display', serif;
     margin: 0;
@@ -10,6 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -18,6 +18,7 @@ body {
     width: 80%;
     max-width: 1200px;
 }
+
 .logo {
     grid-column: 2;
     background: white;
@@ -25,26 +26,31 @@ body {
     font-size: 1.5em;
     font-weight: bold;
 }
+
 .ads {
     background: #888;
     color: white;
     padding: 20px;
     text-align: center;
 }
+
 .left-ads {
     grid-column: 1;
     grid-row: 2 / span 2;
 }
+
 .right-ads {
     grid-column: 3;
     grid-row: 2 / span 2;
 }
+
 .dropdown-menu {
     background: white;
     color: black;
     padding: 10px;
     margin-bottom: 10px;
 }
+
 .banner {
     grid-column: 2;
     background: white;
@@ -52,21 +58,25 @@ body {
     font-size: 1.5em;
     font-weight: bold;
 }
+
 .products {
     grid-column: 2;
     background: white;
     padding: 20px;
 }
+
 .product-list {
     display: flex;
     justify-content: space-around;
     gap: 10px;
 }
+
 .product-item {
     width: 100px;
     height: 100px;
     background: #ddd;
 }
+
 footer {
     background: #6b4226;
     color: white;
