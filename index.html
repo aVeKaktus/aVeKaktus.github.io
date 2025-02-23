@@ -1,37 +1,195 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>God's Mushroom</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>Complex Website</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-container select, .form-container input[type="text"], .form-container button {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .form-container button {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #575757;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">Logo</div>
-        </header>
-        <div class="ads left-ads">Ads</div>
-        <main>
-            <section class="banner">Banner</section>
-            <section class="products">
-                <h2>Products</h2>
-                <div class="product-list">
-                    <div class="product-item"></div>
-                    <div class="product-item"></div>
-                    <div class="product-item"></div>
-                    <div class="product-item"></div>
-                </div>
-            </section>
-        </main>
-        <div class="ads right-ads">
-            <div class="dropdown-menu">Dropdown menu</div>
-            Ads
+
+    <!-- Header -->
+    <header>
+        <h1>Complex Website</h1>
+        <p>Welcome to the complex website with various features</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <div class="dropdown">
+            <a href="#">Services</a>
+            <div class="dropdown-content">
+                <a href="#">Web Design</a>
+                <a href="#">App Development</a>
+                <a href="#">SEO</a>
+            </div>
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 God's Mushroom</p>
-    </footer>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Content Section 1: Form with Dropdown & Input Fields -->
+    <section>
+        <h2>Choose a Service</h2>
+        <div class="form-container">
+            <select id="serviceSelect">
+                <option value="webDesign">Web Design</option>
+                <option value="appDevelopment">App Development</option>
+                <option value="seo">SEO</option>
+            </select>
+            <input type="text" id="nameInput" placeholder="Your Name" />
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </section>
+
+    <!-- Content Section 2: List to Pick Items -->
+    <section>
+        <h2>Pick Your Favorite Features</h2>
+        <form id="featureForm">
+            <input type="checkbox" id="feature1" name="feature" value="feature1">
+            <label for="feature1">Responsive Design</label><br>
+            <input type="checkbox" id="feature2" name="feature" value="feature2">
+            <label for="feature2">E-commerce Integration</label><br>
+            <input type="checkbox" id="feature3" name="feature" value="feature3">
+            <label for="feature3">SEO Optimized</label><br>
+            <button type="button" onclick="submitFeatures()">Submit Features</button>
+        </form>
+    </section>
+
+    <!-- Content Section 3: Display Selected Information -->
+    <section>
+        <h2>Your Selections</h2>
+        <div id="selectedInfo">
+            <p>No selections made yet.</p>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript to handle form submission
+        function submitForm() {
+            const service = document.getElementById('serviceSelect').value;
+            const name = document.getElementById('nameInput').value;
+
+            const selectedInfo = document.getElementById('selectedInfo');
+            selectedInfo.innerHTML = `<p>Name: ${name}</p><p>Service: ${service}</p>`;
+        }
+
+        // JavaScript to handle feature selection form
+        function submitFeatures() {
+            const features = document.querySelectorAll('input[name="feature"]:checked');
+            const selectedFeatures = [];
+            
+            features.forEach((feature) => {
+                selectedFeatures.push(feature.value);
+            });
+
+            const selectedInfo = document.getElementById('selectedInfo');
+            if (selectedFeatures.length > 0) {
+                selectedInfo.innerHTML += `<p>Selected Features: ${selectedFeatures.join(', ')}</p>`;
+            } else {
+                selectedInfo.innerHTML += `<p>No features selected.</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
