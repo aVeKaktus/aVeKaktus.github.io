@@ -4,251 +4,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>God's Mushroom</title>
+    <title>Ultra Complex Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #2a2a72;
+            --secondary: #009ffd;
+            --accent: #ff7f50;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --info: #17a2b8;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
-        
+
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        }
+
+        body {
+            font-family: 'CustomFont', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--light) 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Advanced Navbar Styles */
         .navbar {
-            background-color: #333;
-            overflow: hidden;
-            position: sticky;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
             top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
         }
 
-        .navbar a {
-            float: left;
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .nav-links a {
             color: white;
-            padding: 14px 16px;
             text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .navbar a:hover {
-            background-color: #555;
-        }
-
-        .dropdown {
-            float: left;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
             overflow: hidden;
         }
 
-        .dropdown .dropbtn {
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-            cursor: pointer;
-        }
-
-        .dropdown-content {
-            display: none;
+        .nav-links a::before,
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a::before {
+            top: 0;
+            left: 0;
+            transform-origin: left;
+        }
+
+        .nav-links a::after {
+            bottom: 0;
+            right: 0;
+            transform-origin: right;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section with Parallax */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('https://source.unsplash.com/random/1920x1080') center/cover;
+            transform: translateY(0);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
             z-index: 1;
-            animation: fadeIn 0.3s;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
         }
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .main-content {
-            padding: 20px;
-            max-width: 1200px;
+        /* Grid System */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
-        .mushroom-selection {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        select, input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .product-card {
+        .grid-item {
+            grid-column: span 4;
             background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
+        .grid-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
         }
 
-        .newsletter {
-            background: #444;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+        /* Advanced Card Components */
+        .card {
+            position: relative;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Advanced Button Styles */
+        .btn {
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .button:hover {
-            background-color: #45a049;
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        /* Advanced Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Advanced Form Styles */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* Advanced Modal Component */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Advanced Loading Animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .grid-item {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-item {
+                grid-column: span 12;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links a {
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Menu 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#about">About Us</a>
-                <a href="#products">Products</a>
-                <a href="#contact">Contact</a>
-                <a href="#blog">Blog</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#research">Research</a>
-                <a href="#cultivation">Cultivation Guide</a>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <h1>Welcome to the Future of Web Design</h1>
+            <p>Experience unparalleled innovation and creativity</p>
+            <button class="btn btn-primary">Explore Now</button>
+        </div>
+    </section>
+
+    <section class="grid-container" id="features">
+        <div class="grid-item">
+            <h2>Advanced Features</h2>
+            <p>Cutting-edge technology integration with modern design principles.</p>
+        </div>
+        <div class="grid-item">
+            <h2>Responsive Design</h2>
+            <p>Perfectly adapted for all devices and screen sizes.</p>
+        </div>
+        <div class="grid-item">
+            <h2>Performance</h2>
+            <p>Optimized for speed and efficiency across all platforms.</p>
+        </div>
+    </section>
+
+    <section class="contact-form" id="contact">
+        <h2>Get in Touch</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" required>
             </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </section>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h3>Success!</h3>
+            <p>Your message has been sent successfully.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
         </div>
     </div>
 
-    <div class="main-content">
-        <h1>Welcome to God's Mushroom</h1>
-        
-        <div class="mushroom-selection">
-            <h2>Select Your Mushroom Type</h2>
-            <form>
-                <select name="mushrooms" id="mushrooms">
-                    <option value="">Choose a mushroom...</option>
-                    <option value="shiitake">Shiitake</option>
-                    <option value="portobello">Portobello</option>
-                    <option value="button">Button Mushroom</option>
-                    <option value="oyster">Oyster Mushroom</option>
-                    <option value="enoki">Enoki</option>
-                    <option value="crimini">Crimini</option>
-                    <option value="porcini">Porcini</option>
-                    <option value="morel">Morel</option>
-                    <option value="chanterelle">Chanterelle</option>
-                </select>
+    <script>
+        // Navbar Hide on Scroll
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
 
-                <h3>Customize Your Order</h3>
-                <input type="number" placeholder="Quantity (in grams)" min="100" step="100">
-                <select name="packaging">
-                    <option value="">Select Packaging...</option>
-                    <option value="eco">Eco-friendly Box</option>
-                    <option value="premium">Premium Gift Box</option>
-                    <option value="bulk">Bulk Package</option>
-                </select>
-            </form>
-        </div>
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
 
-        <div class="product-grid">
-            <div class="product-card">
-                <h3>Fresh Mushrooms</h3>
-                <p>Handpicked daily for maximum freshness</p>
-                <button class="button">Learn More</button>
-            </div>
-            <div class="product-card">
-                <h3>Dried Mushrooms</h3>
-                <p>Preserved to maintain flavor and nutrients</p>
-                <button class="button">Learn More</button>
-            </div>
-            <div class="product-card">
-                <h3>Growing Kits</h3>
-                <p>Start your own mushroom garden</p>
-                <button class="button">Learn More</button>
-            </div>
-            <div class="product-card">
-                <h3>Supplements</h3>
-                <p>Natural health benefits in capsule form</p>
-                <button class="button">Learn More</button>
-            </div>
-        </div>
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const parallax = document.querySelector('.parallax-bg');
+            let scrollPosition = window.pageYOffset;
+            parallax.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
 
-        <div class="newsletter">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p>Get updates on new products, cultivation tips, and special offers!</p>
-            <form>
-                <input type="email" placeholder="Enter your email address">
-                <button class="button">Subscribe</button>
-            </form>
-        </div>
-    </div>
+        // Form Handling
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('successModal').classList.add('active');
+        });
 
-    <footer class="footer">
-        <div class="main-content">
-            <div class="footer-grid">
-                <div>
-                    <h3>Contact Us</h3>
-                    <p>Email: info@godsmushroom.com</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Address: 123 Mushroom Street, Fungus City</p>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="button">Facebook</a>
-                    <a href="#" class="button">Instagram</a>
-                    <a href="#" class="button">Twitter</a>
-                    <a href="#" class="button">YouTube</a>
-                </div>
-            </div>
-            <p>&copy; 2024 God's Mushroom. All rights reserved.</p>
-        </div>
-    </footer>
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(50px)';
+            observer.observe(item);
+        });
+
+        // Dynamic Theme Switching
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Performance Optimization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lazy load images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+    </script>
 </body>
 </html>
+
 
