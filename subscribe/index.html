@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - God's Mushroom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:wght@400;600&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c1810;
+            --secondary-color: #8b4513;
+            --accent-color: #d2691e;
+            --text-color: #382218;
+            --light-bg: #fff8f0;
+            --mushroom-brown: #966F33;
+            --spore-purple: #800080;
+            --earth-tone: #5C4033;
+        }
+
+        .about-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('mushroom-forest.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .about-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+            margin-top: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid var(--accent-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--mushroom-brown);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--spore-purple);
+            border-radius: 50%;
+            top: 15px;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -17px;
+        }
+
+        .right::after {
+            left: -17px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="about-hero">
+        <div>
+            <h1>Our Story</h1>
+            <p>Discovering the Divine Through Fungi</p>
+        </div>
+    </section>
+
+    <div class="about-content">
+        <h2>About God's Mushroom</h2>
+        <p>Founded in 2020, God's Mushroom emerged from a profound appreciation for the mystical and medicinal properties of fungi. Our mission is to connect people with the extraordinary world of mushrooms through carefully curated mystery boxes.</p>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Vision</h3>
+                <p>To create a global community of mushroom enthusiasts, fostering knowledge, appreciation, and responsible cultivation of fungi.</p>
+            </div>
+            <div class="about-card">
+                <h3>Our Values</h3>
+                <p>Sustainability, education, and the sacred connection between humans and nature guide everything we do.</p>
+            </div>
+            <div class="about-card">
+                <h3>Our Promise</h3>
+                <p>Every mystery box is thoughtfully curated to provide a unique and enriching experience in mycological discovery.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-section">
+        <h2 style="text-align: center; margin-bottom: 50px;">Our Expert Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="team-member1.jpg" alt="Team Member">
+                <h3>Dr. Sarah Mitchell</h3>
+                <p>Head Mycologist</p>
+            </div>
+            <div class="team-member">
+                <img src="team-member2.jpg" alt="Team Member">
+                <h3>John Peterson</h3>
+                <p>Cultivation Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="team-member3.jpg" alt="Team Member">
+                <h3>Maria Garcia</h3>
+                <p>Sustainability Director</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="content">
+                <h3>2020</h3>
+                <p>Founded with a vision to share the wonders of mushrooms</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="content">
+                <h3>2021</h3>
+                <p>Launched our first mystery box subscription service</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="content">
+                <h3>2022</h3>
+                <p>Expanded to international markets</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="content">
+                <h3>2023</h3>
+                <p>Established our mycological research center</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        timelineItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = item.classList.contains('left') ? 
+                'translateX(-100px)' : 'translateX(100px)';
+            item.style.transition = 'all 0.5s ease-in-out';
+            observer.observe(item);
+        });
+
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
