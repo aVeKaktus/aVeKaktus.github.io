@@ -34,7 +34,7 @@
                 <p>Poznaj moją ukochaną</p>
             </div>
             <div class="about-content">
-                <img src="[ŚCIEŻKA_DO_ZDJĘCIA_2]" alt="[NICOL]" class="about-image">
+                <img src="https://i.imgur.com/YAXqWmP.jpeg" alt="[NICOL]" class="about-image">
                 <div class="about-text">
                     <h3>Moja [NICOL]</h3>
                     <p>
@@ -93,7 +93,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="section gallery">
+    <section class="section gallery" id="gallery">
         <div class="container">
             <div class="section-header">
                 <h2>Galeria Nicol</h2>
@@ -101,20 +101,50 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://i.imgur.com/eJ9LUTx.jpeg" alt="[NICOL]">
+                    <a class="gallery-link" href="#photo1" aria-label="Powiększ zdjęcie 1">
+                        <img src="https://i.imgur.com/eJ9LUTx.jpeg" alt="[NICOL]">
+                    </a>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.imgur.com/zMp4Hym.jpeg" alt="[NICOL]">
+                    <a class="gallery-link" href="#photo2" aria-label="Powiększ zdjęcie 2">
+                        <img src="https://i.imgur.com/zMp4Hym.jpeg" alt="[NICOL]">
+                    </a>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.imgur.com/J5Sdd8X.jpeg" alt="[NICOL]">
+                    <a class="gallery-link" href="#photo3" aria-label="Powiększ zdjęcie 3">
+                        <img src="https://i.imgur.com/J5Sdd8X.jpeg" alt="[NICOL]">
+                    </a>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://i.imgur.com/vcFjKTu.jpeg" alt="[NICOL]">
+                    <a class="gallery-link" href="#photo4" aria-label="Powiększ zdjęcie 4">
+                        <img src="https://i.imgur.com/vcFjKTu.jpeg" alt="[NICOL]">
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Pełnoekranowe podglądy zdjęć (pure CSS, bez JS) -->
+    <div id="photo1" class="lightbox-target">
+        <a class="lightbox-backdrop" href="#gallery" aria-label="Zamknij podgląd"></a>
+        <img src="https://i.imgur.com/eJ9LUTx.jpeg" alt="[NICOL]">
+        <a class="lightbox-close" href="#gallery" aria-label="Zamknij">×</a>
+    </div>
+    <div id="photo2" class="lightbox-target">
+        <a class="lightbox-backdrop" href="#gallery" aria-label="Zamknij podgląd"></a>
+        <img src="https://i.imgur.com/zMp4Hym.jpeg" alt="[NICOL]">
+        <a class="lightbox-close" href="#gallery" aria-label="Zamknij">×</a>
+    </div>
+    <div id="photo3" class="lightbox-target">
+        <a class="lightbox-backdrop" href="#gallery" aria-label="Zamknij podgląd"></a>
+        <img src="https://i.imgur.com/J5Sdd8X.jpeg" alt="[NICOL]">
+        <a class="lightbox-close" href="#gallery" aria-label="Zamknij">×</a>
+    </div>
+    <div id="photo4" class="lightbox-target">
+        <a class="lightbox-backdrop" href="#gallery" aria-label="Zamknij podgląd"></a>
+        <img src="https://i.imgur.com/vcFjKTu.jpeg" alt="[NICOL]">
+        <a class="lightbox-close" href="#gallery" aria-label="Zamknij">×</a>
+    </div>
 
     <!-- Memories Section -->
     <!--
@@ -180,6 +210,7 @@
         <p>Stworzone z <span class="heart">💕</span> dla Nicol</p>
         <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">© 2025 - Wszystkie prawa zastrzeżone</p>
     </footer>
-    <script src="scripts.js"></script>
+    <!-- dodane ?v=2 żeby przeglądarka na pewno wczytała nową wersję pliku -->
+    <script src="scripts.js?v=2"></script>
 </body>
 </html>

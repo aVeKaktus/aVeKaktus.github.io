@@ -1,51 +1,25 @@
 // JavaScript dla strony fanowskiej Nicol
+// Lightbox zdjęć działa w CSS przez :target (#photo1, #photo2, ...)
+// Tutaj tylko obsługujemy klawisz ESC, żeby „cofał” z powrotem do galerii.
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Strona załadowana!');
+(function () {
+    function handleEscClose(event) {
+        event = event || window.event;
+        var key = event.key || event.keyCode;
 
-    // Lightbox dla zdjęć w galerii
-    const galleryImages = document.querySelectorAll('.gallery-item img');
-
-    if (galleryImages.length > 0) {
-        // Tworzymy overlay tylko raz
-        const overlay = document.createElement('div');
-        overlay.className = 'lightbox-overlay';
-        overlay.innerHTML = '<img class="lightbox-image" src="" alt="">';
-        document.body.appendChild(overlay);
-
-        const overlayImage = overlay.querySelector('.lightbox-image');
-
-        function openLightbox(src, alt) {
-            overlayImage.src = src;
-            overlayImage.alt = alt || '';
-            overlay.classList.add('visible');
-        }
-
-        function closeLightbox() {
-            overlay.classList.remove('visible');
-        }
-
-        // Kliknięcie w obrazek z galerii otwiera go na pełnym ekranie
-        galleryImages.forEach(img => {
-            img.style.cursor = 'zoom-in';
-            img.addEventListener('click', () => {
-                openLightbox(img.src, img.alt);
-            });
-        });
-
-        // Kliknięcie w tło (poza zdjęciem) zamyka podgląd
-        overlay.addEventListener('click', (event) => {
-            // Jeżeli kliknięto dokładnie w overlay (nie w obrazek), zamknij
-            if (event.target === overlay) {
-                closeLightbox();
+        if (key === 'Escape' || key === 'Esc' || key === 27) {
+            // Jeśli aktualny hash to np. #photo1, #photo2, #photo3, #photo4
+            if (window.location && window.location.hash && /^#photo\d+$/.test(window.location.hash)) {
+                // Nie cofamy całej historii, tylko zmieniamy hash na #gallery
+                event.preventDefault();
+                window.location.hash = '#gallery';
             }
-        });
-
-        // ESC też zamyka podgląd
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
-        });
+        }
     }
-});
+
+    if (document.addEventListener) {
+        document.addEventListener('keydown', handleEscClose);
+    } else if (document.attachEvent) {
+        document.attachEvent('onkeydown', handleEscClose);
+    }
+})();
