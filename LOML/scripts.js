@@ -23,7 +23,7 @@
         document.attachEvent('onkeydown', handleEscClose);
     }
 
-    const startDate = new Date('2025-12-06'); // Change this to your actual start date
+    const startDate = new Date('2025-12-06T18:43:00'); // Change this to your actual start date
         
         function updateCounter() {
             const now = new Date();
