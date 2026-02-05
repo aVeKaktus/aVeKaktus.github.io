@@ -1,0 +1,25 @@
+:root {
+    --primary-pink: #ff6b9d;
+    --secondary-pink: #ffc1d6;
+    --accent-gold: #ffd700;
+    --dark-text: #2c2c2c;
+    --light-bg: #fff5f8;
+    --white: #ffffff;
+}
+
+.counter-section {
+    background: var(--light-bg);
+    padding: 50px 0;
+}
+
+.counter-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.counter-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    text-align: center;
+}
