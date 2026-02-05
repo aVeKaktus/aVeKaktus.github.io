@@ -23,7 +23,7 @@
         document.attachEvent('onkeydown', handleEscClose);
     }
 
-    const startDate = new Date('2025-12-06T17:43:00+01:00'); // Change this to your actual start date (UTC+1)
+    const startDate = new Date('2025-12-06T18:43:00'); // Change this to your actual start date (local time)
         
         function updateCounter() {
             const now = new Date();
