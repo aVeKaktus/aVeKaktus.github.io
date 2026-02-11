@@ -202,6 +202,71 @@
             box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
         }
 
+        .love-letter {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--secondary-pink);
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .letter-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+        }
+
+        .heart-decoration {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .letter-content {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .letter-paragraph {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            text-indent: 20px;
+            font-weight: 400;
+        }
+
+        .letter-signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .letter-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signature-heart {
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -236,6 +301,52 @@
         <div class="message">
             <p>Wiedziałem, że powiesz Tak! 💖</p>
             <p>Kocham cię Słońce!!!✨</p>
+        </div>
+
+        <div class="love-letter">
+            <div class="letter-header">
+                <h3>Moja Kochana Walentynko,</h3>
+                <div class="heart-decoration">💕</div>
+            </div>
+            
+            <div class="letter-content">
+                <p class="letter-paragraph">
+                    Chciałem Ci dziś coś pokazać, bo dla mnie Walentynki to nie są o wielkich gestach. 
+                    To o tym, by szczerze i prosto powiedzieć prawdę osobie, która znaczy najwięcej. Tą osobą jesteś Ty.
+                </p>
+                
+                <p class="letter-paragraph">
+                    Stałaś się tak ważną częścią mojego życia, że czasami mnie to zaskakuje. 
+                    Wnosisz ciepło tam, gdzie nawet nie wiedziałem, że jest zimno. 
+                    Robisz dobre dni lepszymi i trudne dni łatwiejszymi, po prostu będąc sobą. To rzadka rzecz i nie lekceważę tego.
+                </p>
+                
+                <p class="letter-paragraph">
+                    Kocham sposób, w jaki o mnie dbasz. Sposób, w jaki słuchasz. 
+                    Sposób, w jaki istniejesz w świecie całym sercem. 
+                    Czuje się widziany i zrozumiany, i przypominasz mi, żeby zwolnić i docenić to, co jest przede mną.
+                </p>
+                
+                <p class="letter-paragraph">
+                    Nie zawsze mówię wszystko idealnie, ale proszę, wiedz to że moja miłość do Ciebie jest stała i prawdziwa. 
+                    Wybieram Cię dzisiaj i będę wybierał w wszystkich małych, zwyczajnych chwilach, które faktycznie znaczą najwięcej.
+                </p>
+                
+                <p class="letter-paragraph">
+                    Dziękuję, że jesteś sobą. Dziękuję, że jesteś moja.
+                </p>
+                
+                <p class="letter-signature">
+                    Wesołych Walentynek.<br>
+                    Zawsze Twój,
+                    <br>
+                    Bartosz
+                </p>
+            </div>
+            
+            <div class="letter-footer">
+                <div class="signature-heart">💖</div>
+            </div>
         </div>
 
         <a href="walentynki.html" class="back-button" id="backBtn">Spróbuj ponownie</a>
