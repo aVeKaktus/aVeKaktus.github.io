@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yay! 💕</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -33,20 +34,26 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
         }
 
         body::before {
             content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
             animation: float 20s infinite linear;
+            pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes float {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         .container {
@@ -269,9 +276,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+            
             .container {
-                padding: 60px 40px;
+                padding: 40px 20px;
                 margin: 20px;
+                max-width: calc(100% - 40px);
+                border-radius: 20px;
             }
             
             h1 {
@@ -284,6 +300,46 @@
             
             .gif-container {
                 margin: 30px 0;
+            }
+            
+            .love-letter {
+                padding: 25px 20px;
+                margin: 30px 0;
+                border-radius: 15px;
+            }
+            
+            .letter-header h3 {
+                font-size: 1.6rem;
+            }
+            
+            .letter-paragraph {
+                font-size: 1rem;
+                text-indent: 15px;
+            }
+            
+            .letter-signature {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 15px;
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .love-letter {
+                padding: 20px 15px;
+            }
+            
+            .letter-paragraph {
+                font-size: 0.95rem;
+                text-indent: 10px;
             }
         }
     </style>
