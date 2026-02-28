@@ -24,10 +24,14 @@
     }
 
     const startDate = new Date('2025-12-06T18:43:00'); // Change this to your actual start date (local time)
+    const freezeDate = new Date('2026-03-01T00:00:00'); // Freeze date at midnight
         
         function updateCounter() {
             const now = new Date();
-            const diff = now - startDate;
+            
+            // If current time is after freeze date, use freeze date
+            const effectiveTime = now >= freezeDate ? freezeDate : now;
+            const diff = effectiveTime - startDate;
             
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
